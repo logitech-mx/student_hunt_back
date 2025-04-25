@@ -1,15 +1,16 @@
 require('dotenv').config(); // Load environment variables from the .env file
 const { Sequelize } = require('sequelize');
 
-// Create a Sequelize instance using values from .env
+// Create a Sequelize instance using the Railway-provided environment variables
 const sequelize = new Sequelize(
-    process.env.DB_NAME, // Database name from .env
-    process.env.DB_USER, // Database username from .env
-    process.env.DB_PASSWORD, // Database password from .env
+    process.env.PGDATABASE,  // Database name from Railway
+    process.env.PGUSER,      // Database username from Railway
+    process.env.PGPASSWORD,  // Database password from Railway
     {
-        host: process.env.DB_HOST, // Host from .env
-        dialect: 'postgres', // Database dialect
-        logging: false, // Disable SQL query logging
+        host: process.env.PGHOST,   // Host from Railway
+        port: process.env.PGPORT,   // Port from Railway (default is 5432 for PostgreSQL)
+        dialect: 'postgres',        // Database dialect
+        logging: false,             // Disable SQL query logging
     }
 );
 
