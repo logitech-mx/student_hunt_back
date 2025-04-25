@@ -23,6 +23,7 @@ const searchStudents = async (req, res) => {
         res.json(filtered);
     } catch (err) {
         console.error("Ошибка при поиске студентов:", err);
+        console.log(process.env.PGDATABASE, process.env.PGUSER, process.env.PGHOST, process.env.PGHOST)
         res.status(500).json({ message: `Ошибка при поиске студентов: ${err.message}` });
     }
 };
