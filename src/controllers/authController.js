@@ -35,7 +35,7 @@ const registerUser = async (req, res) => {
         });
     } catch (err) {
         console.error(err);
-        res.status(500).json({ message: "Ошибка сервера" });
+        res.status(500).json({ message: `Ошибка сервера: ${err.message}` });
     }
 };
 
@@ -71,7 +71,7 @@ const loginUser = async (req, res) => {
         });
     } catch (err) {
         console.error(err);
-        res.status(500).json({ message: "Ошибка сервера" });
+        res.status(500).json({ message: `Ошибка сервера: ${err.message}` });
     }
 };
 
