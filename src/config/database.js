@@ -1,14 +1,15 @@
-// config/database.js
+require('dotenv').config(); // Load environment variables from the .env file
 const { Sequelize } = require('sequelize');
 
+// Create a Sequelize instance using values from .env
 const sequelize = new Sequelize(
-    'job_platform', // имя базы данных
-    'user', // имя пользователя
-    'password123', // пароль
+    process.env.DB_NAME, // Database name from .env
+    process.env.DB_USER, // Database username from .env
+    process.env.DB_PASSWORD, // Database password from .env
     {
-        host: 'localhost', // или 'postgres_container', если подключение через Docker
-        dialect: 'postgres',
-        logging: false, // отключить логирование SQL запросов
+        host: process.env.DB_HOST, // Host from .env
+        dialect: 'postgres', // Database dialect
+        logging: false, // Disable SQL query logging
     }
 );
 
