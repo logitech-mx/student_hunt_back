@@ -8,7 +8,9 @@ const {
     deleteJob,
     getUserJobs,
     getJobsWithApplications,
-    getApplicantsForJob
+    getApplicantsForJob,
+    getJobRecommendations,
+    getAdvicesForJob
 } = require('../controllers/jobController');
 const authenticateJWT = require('../middleware/auth');
 
@@ -17,7 +19,9 @@ const router = express.Router();
 router.get('/', getAllJobs);
 router.get('/search', searchJobsText);
 router.get('/user', authenticateJWT, getUserJobs);
+router.get('/recommendations', authenticateJWT, getJobRecommendations);
 router.get('/my-applications', authenticateJWT, getJobsWithApplications);
+router.get('/advise/:id/', authenticateJWT, getAdvicesForJob);
 router.get('/:jobId/applicants', authenticateJWT, getApplicantsForJob);
 router.get('/:id', getJob);
 router.post('/', authenticateJWT, createJob);

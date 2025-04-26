@@ -19,7 +19,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-
+console.log("Trying to connect database")
 sequelize.sync({ alter: true })
     .then(() => console.log("Database connected and models synchronized."))
     .catch((err) => console.log("DB connection error:", err));
